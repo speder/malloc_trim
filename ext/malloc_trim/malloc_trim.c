@@ -40,9 +40,9 @@ static VALUE enable_trimming(VALUE self) {
     return Qnil;
   #endif
 
-  if (!RB_TEST(objtracer)) {
+//if (!RB_TEST(objtracer)) {
     objtracer = rb_tracepoint_new(0, RUBY_INTERNAL_EVENT_GC_END_MARK, malloc_trim_gc_end_handler, 0);
-  }
+//}
   rb_tracepoint_enable(objtracer);
   return Qtrue;
 }
@@ -52,9 +52,9 @@ static VALUE disable_trimming(VALUE self) {
     return Qnil;
   #endif
 
-  if (RB_TEST(objtracer)) {
+//if (RB_TEST(objtracer)) {
     rb_tracepoint_disable(objtracer);
-  }
+//}
   objtracer = Qnil;
   return Qtrue;
 }
